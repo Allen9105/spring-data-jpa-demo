@@ -10,7 +10,7 @@
     <artifactId>helloworld</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>helloworld</name>
-    <description>Demo project for Spring Boot</description>
+    <description>01.第一个helloworld程序</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -21,6 +21,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
 
         <dependency>
@@ -35,13 +40,6 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- Spring Boot 单元测试 [启动器] -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring.boot.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
