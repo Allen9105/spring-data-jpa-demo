@@ -15,6 +15,7 @@
         <spring.boot.version>2.4.1</spring.boot.version>
         <mysql.version>8.0.22</mysql.version>
         <lombok.version>1.18.16</lombok.version>
+        <jackson-bom.version>2.11.3</jackson-bom.version>
         <!-- 指定jdk编译版本 -->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
