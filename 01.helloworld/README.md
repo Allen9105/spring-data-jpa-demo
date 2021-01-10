@@ -6,7 +6,7 @@
 
 JPA是Java Persistence API的简称，中文名为Java持久层API，是JDK 5.0注解或XML描述对象－关系表的映射关系，并将运行期的实体对象持久化到数据库中。
 
-![Repository关系结构图](C:\Users\Administrator\IdeaProjects\spring-data-jpa\01.helloworld\document\image\Repository关系结构图.png)
+![Repository关系结构图](document\image\Repository关系结构图.png)
 
 <center>Spring Data JPA的主要类及结构图</center>
 
@@ -16,7 +16,7 @@ JPA是Java Persistence API的简称，中文名为Java持久层API，是JDK 5.0�
 
 ------
 
-![基础查询方法](C:\Users\Administrator\IdeaProjects\spring-data-jpa\01.helloworld\document\image\基础查询方法.png)
+![基础查询方法](document\image\基础查询方法.png)
 
 <center>Spring Data JPA 基础查询方法</center>
 
