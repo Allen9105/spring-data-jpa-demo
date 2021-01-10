@@ -7,7 +7,7 @@
     <artifactId>spring-data-jpa-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-data-jpa-demo</name>
-    <description>Demo project for Spring Boot</description>
+    <description>学习Spring Data JPA知识</description>
     <packaging>pom</packaging>
 
     <properties>
@@ -22,6 +22,7 @@
 
     <modules>
         <module>01.helloworld</module>
+        <module>02.defining-query-methods</module>
     </modules>
 
     <dependencyManagement>
@@ -32,6 +33,14 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-jpa</artifactId>
                 <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!-- Spring Boot 单元测试 [启动器] -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring.boot.version}</version>
+                <scope>test</scope>
             </dependency>
 
             <!-- MySQL JDBC 驱动 -->
