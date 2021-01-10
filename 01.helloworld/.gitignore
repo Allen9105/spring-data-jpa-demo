@@ -2,7 +2,9 @@
 ### xkcoding-后端 template
 ### Spring Boot ###
 target/
-!.mvn/wrapper/maven-wrapper.jar
+.mvn
+mvnw
+mvnw.cmd
 
 ### STS ###
 .apt_generated
