@@ -1,0 +1,15 @@
+spring:
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver # MySQL8.x 驱动
+    url: jdbc:mysql:///jpa?useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+
+  # JPA配置
+  jpa:
+    show-sql: true # 打印SQL
+    hibernate:
+      ddl-auto: update # 数据库没有表时自动构建
+    database: mysql  # 指定数据库类型
+    database-platform: org.hibernate.dialect.MySQL8Dialect # 数据库方言
