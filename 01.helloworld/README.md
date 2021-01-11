@@ -82,7 +82,7 @@ Spring Data JPA同时支持 `NoSQL` 和 `关系型数据库` ，从 `JpaReposito
 
 
 
-### 附录
+### 附录 
 
 - 如果想在 `IDEA` 中查看 `UML` 图，`右键 -> Diagrams -> Show Diagram` ，快捷键 `Ctrl + Alt + Shift + U` 
 - 如果想看 `Repository` 所有子类，`工具栏 Navigate ->Type Hierarchy` ，快捷键 `Ctrl + H` 
