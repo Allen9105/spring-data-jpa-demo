@@ -1,5 +1,62 @@
 # Spring Data JPA
 
+### 批量插入数据
+
+为了方便后续学习，我们先插入一组数据。
+
+#### 普通批量插入
+
+```java
+@Test //批量插入数据
+public void addBatch(){
+    //为了可读性，我们就拿2条数据作为批量
+    String str = "[{\"name\":\"孟娟\",\"email\":\"s.dgmkdgv@zhokx.br\",\"createTime\":\"1971-16-18 08:16:59\"},{\"name\":\"石静\",\"email\":\"p.spot@qhtowhqgss.jm\",\"createTime\":\"2018-00-16 00:00:46\"}]";
+    List<User> userList = JSONObject.parseArray(str, User.class);
+    userList.forEach(item -> userRepository.saveAll(userList));
+    /*
+      打印：
+      	Hibernate: insert into user (create_time, name) values (?, ?)
+        Hibernate: insert into user (create_time, name) values (?, ?)
+    */
+}
+```
+
+从以上代码中，我们使用 `JPA` 默认的 `saveAll()` 方法。
+
+#### 优化批量插入
+
+通过查看 `saveAll()` 源码发现，底层调用 `save()` 方法，如果对速度有要求，我们可以小小的提升一下。`只能提升一点点` 
+
+```java
+//省略UserService，直接UserServiceImpl
+@Service
+public class UserServiceImpl implements UserService {
+    @PersistenceContext //通过该注解获取容器托管的EntityManager对象
+    private EntityManager em;
+    
+    @Override
+    @Transactional
+    public void saveBatch(List<User> userList) {
+        userList.forEach(user ->
+            em.persist(user)
+        );
+        //不需要关闭操作 em.close()
+    }
+}
+
+//测试
+@Resource
+private UserService userService;
+@Test
+public void saveBatch(){
+    String str = "[{\"name\":\"孟娟\",\"email\":\"s.dgmkdgv@zhokx.br\",\"createTime\":\"1971-16-18 08:16:59\"},{\"name\":\"石静\",\"email\":\"p.spot@qhtowhqgss.jm\",\"createTime\":\"2018-00-16 00:00:46\"}]";
+    List<User> userList = JSONObject.parseArray(str, User.class);
+    userService.saveBatch(userList);
+}
+```
+
+
+
 ### 自定义查询策略
 
 #### 查询关键字列表

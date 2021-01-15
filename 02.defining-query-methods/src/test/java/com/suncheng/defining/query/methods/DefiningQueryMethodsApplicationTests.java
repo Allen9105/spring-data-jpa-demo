@@ -1,68 +1,35 @@
 package com.suncheng.defining.query.methods;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.alibaba.fastjson.JSONObject;
 import com.suncheng.defining.query.methods.entity.User;
 import com.suncheng.defining.query.methods.repository.UserRepository;
-import org.apache.commons.lang3.time.DateUtils;
+import com.suncheng.defining.query.methods.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
+
 
 @SpringBootTest
 class DefiningQueryMethodsApplicationTests {
 
     @Resource
+    private UserService userService;
+    @Resource
     private UserRepository userRepository;
 
-    @Test //通用查询方法
-    public void findByCreateTimeBetween() throws Exception {
-        Date startDate = DateUtils.parseDate("2021-01-09 00:00:00", "yyyy-MM-dd HH:mm:ss");
-        Date endDate = DateUtils.parseDate("2021-01-10 23:59:59", "yyyy-MM-dd HH:mm:ss");
-        List<User> userList = userRepository.findByCreateTimeBetweenOrderByCreateTimeDesc(startDate, endDate);
-        //将list转为json输出
-        System.out.println(new ObjectMapper().writeValueAsString(userList));
+    @Test //批量插入数据
+    public void addBatch(){
+        String str = "[{\"name\":\"孟娟\",\"email\":\"s.dgmkdgv@zhokx.br\",\"createTime\":\"1971-16-18 08:16:59\"},{\"name\":\"石静\",\"email\":\"p.spot@qhtowhqgss.jm\",\"createTime\":\"2018-00-16 00:00:46\"},{\"name\":\"罗秀英\",\"email\":\"m.yzczdqdiu@riq.mil\",\"createTime\":\"2015-44-18 03:44:35\"},{\"name\":\"姜军\",\"email\":\"i.nefeeuxpu@dturlv.ba\",\"createTime\":\"1975-25-25 05:25:49\"},{\"name\":\"郝静\",\"email\":\"t.pzpueyf@ongwbl.cf\",\"createTime\":\"1971-17-24 23:17:46\"},{\"name\":\"宋娟\",\"email\":\"m.pfa@kkcbeb.pl\",\"createTime\":\"1979-44-08 15:44:30\"},{\"name\":\"朱明\",\"email\":\"s.pnihovzsd@smybgc.gw\",\"createTime\":\"2012-18-26 21:18:46\"},{\"name\":\"梁磊\",\"email\":\"c.hnanxtymeg@yufqwryse.va\",\"createTime\":\"1978-03-25 22:03:16\"},{\"name\":\"贺强\",\"email\":\"h.hnaxvbimmp@eoljvcie.md\",\"createTime\":\"2017-16-02 22:16:58\"},{\"name\":\"曾超\",\"email\":\"e.vglnhx@gyxowy.tg\",\"createTime\":\"2014-07-09 15:07:15\"},{\"name\":\"任洋\",\"email\":\"m.trofldroy@pcofoygofi.co\",\"createTime\":\"2000-40-31 06:40:21\"},{\"name\":\"邹芳\",\"email\":\"i.meodeest@udfimskc.org\",\"createTime\":\"1983-21-27 19:21:23\"},{\"name\":\"李磊\",\"email\":\"x.odsezvqas@cpxos.gh\",\"createTime\":\"2017-55-21 14:55:30\"},{\"name\":\"高艳\",\"email\":\"g.hnxlilh@uojy.be\",\"createTime\":\"1997-59-20 19:59:03\"},{\"name\":\"郭娜\",\"email\":\"r.hteyduub@ltdqj.tk\",\"createTime\":\"1979-15-29 17:15:25\"},{\"name\":\"方洋\",\"email\":\"u.vedmruletx@ztckysgi.dm\",\"createTime\":\"1975-36-21 07:36:09\"},{\"name\":\"郭杰\",\"email\":\"q.twxo@vqyfl.vn\",\"createTime\":\"1976-52-14 05:52:48\"},{\"name\":\"康敏\",\"email\":\"q.ntwcwtgxr@hstuh.au\",\"createTime\":\"1988-30-28 23:30:51\"},{\"name\":\"孟明\",\"email\":\"m.doxtlx@yxseppq.cy\",\"createTime\":\"2004-17-01 18:17:19\"},{\"name\":\"罗艳\",\"email\":\"d.qjrq@hshbbhplow.in\",\"createTime\":\"1991-20-13 20:20:23\"},{\"name\":\"马洋\",\"email\":\"f.usewonfs@eslcjlw.mo\",\"createTime\":\"1989-53-07 09:53:00\"},{\"name\":\"唐芳\",\"email\":\"y.kvcw@bjwk.hm\",\"createTime\":\"1977-30-25 16:30:37\"},{\"name\":\"汪静\",\"email\":\"i.sotebqj@javmeweiu.lb\",\"createTime\":\"1975-27-12 05:27:27\"},{\"name\":\"袁洋\",\"email\":\"b.sipbqxspi@mlqbgy.cn\",\"createTime\":\"1974-59-03 12:59:33\"},{\"name\":\"马芳\",\"email\":\"p.axuu@esbx.tv\",\"createTime\":\"1991-52-20 10:52:22\"},{\"name\":\"顾静\",\"email\":\"t.bdjdgtogie@vlbddldjf.gn\",\"createTime\":\"2010-19-18 16:19:33\"},{\"name\":\"王杰\",\"email\":\"i.rccygcmuhg@drkgvnuwf.qa\",\"createTime\":\"1972-59-16 01:59:39\"},{\"name\":\"江娟\",\"email\":\"m.mymsc@vrrexdv.fo\",\"createTime\":\"1972-14-26 05:14:12\"},{\"name\":\"康敏\",\"email\":\"e.jjitniwz@ppccdkok.info\",\"createTime\":\"1988-42-15 10:42:37\"},{\"name\":\"赵桂英\",\"email\":\"i.mrynzvpkyh@vgdjdy.coop\",\"createTime\":\"1984-28-28 02:28:14\"},{\"name\":\"宋艳\",\"email\":\"t.ltjwg@jjre.st\",\"createTime\":\"1982-32-27 01:32:19\"},{\"name\":\"赵霞\",\"email\":\"w.fbxfkrd@gurwksi.to\",\"createTime\":\"1999-36-01 15:36:14\"}]";
+        List<User> userList = JSONObject.parseArray(str, User.class);
+        userService.saveBatch(userList);
     }
 
-    @Test
-    public void findByName() {
-        User user = userRepository.findByName("孙悟空00").orElse(new User());
-        System.out.println(user);
+    @Test //根据邮箱后缀查询
+    public void findByEmailEndingWith(){
+        List<User> userList = userRepository.findByEmailEndingWith("@dturlv.ba");
+        userList.forEach(System.out::println);
     }
 
-    @Test
-    public void findByEmailIsNotNull() {
-        userRepository.findByEmailIsNotNull().forEach(item -> System.out.println(item));
-        /* 打印：
-            Hibernate: select user0_.id as id1_0_, user0_.create_time as create_t2_0_, user0_.email as email3_0_, user0_.name as name4_0_ from user user0_ where user0_.email is not null
-            User(id=18, name=孙悟空00, email=xxxx@0com, createTime=2021-01-09 22:51:08.0)
-            User(id=20, name=孙悟空02, email=xxxx@2com, createTime=2021-01-11 22:51:08.0)
-         */
-    }
-
-    @Test
-    public void findByIdNotIn() {
-        userRepository.findByIdNotIn(new Long[]{18L, 20L}).forEach(item -> System.out.println(item));
-        /* 打印：
-            Hibernate: select user0_.id as id1_0_, user0_.create_time as create_t2_0_, user0_.email as email3_0_, user0_.name as name4_0_ from user user0_ where user0_.id not in  (? , ?)
-            User(id=19, name=孙悟空01, email=null, createTime=2021-01-10 22:51:08.0)
-         */
-    }
-
-    @Test
-    @Transactional //需要自己托管事物
-    @Rollback(value = false) //必须加这行，强制让事物不回滚
-    //注意：如果只加 @Transactional 的话，打印只会输出一条 SELECT 语句，默认执行完会回滚
-    public void deleteByName() {
-        userRepository.deleteByName("孙悟空00").forEach(item -> System.out.println(item));
-        /* 打印：
-            Hibernate: select user0_.id as id1_0_, user0_.create_time as create_t2_0_, user0_.email as email3_0_, user0_.name as name4_0_ from user user0_ where user0_.name=?
-            User(id=15, name=孙悟空00, email=xxxx@0com, createTime=2021-01-08 20:30:55.0)
-            Hibernate: delete from user where id=?
-         */
-    }
 }

@@ -1,16 +1,23 @@
 package com.suncheng.defining.query.methods.repository;
 
-
 import com.suncheng.defining.query.methods.common.BaseRepository;
-import com.suncheng.defining.query.methods.common.MyUserRepository;
 import com.suncheng.defining.query.methods.entity.User;
+import org.springframework.data.repository.RepositoryDefinition;
 
 import java.util.List;
 
-public interface UserRepository extends BaseRepository<User, Long>, MyUserRepository {
+/**
+ * 使用 @RepositoryDefinition 注解，定义 UserRepository（选择性暴露UserRepository中方法）
+ * 相当于： public interface UserRepository extends UserRepository<User, Long>
+ */
+@RepositoryDefinition(domainClass = User.class, idClass = Long.class)
+public interface UserRepository extends BaseRepository<User, Long> {
 
-    List<User> findByEmailIsNotNull();
-
-    List<User> deleteByName(String name);
+    /**
+     * 根据邮箱后缀查询
+     * @param lastEmail
+     * @return List<User>
+     */
+    List<User> findByEmailEndingWith(String lastEmail);
 
 }

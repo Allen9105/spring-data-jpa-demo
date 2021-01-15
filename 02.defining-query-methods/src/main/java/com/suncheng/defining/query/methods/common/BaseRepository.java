@@ -1,5 +1,6 @@
 package com.suncheng.defining.query.methods.common;
 
+
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.Repository;
 
@@ -12,10 +13,14 @@ import java.util.List;
  * @param <T>
  * @param <ID>
  */
-@NoRepositoryBean //让Spring Data 不去实例化 repository
-public interface BaseRepository<T, ID extends Serializable> extends Repository<T, ID> {
+@NoRepositoryBean //让Spring Data JPA不去实例化 repository
+public interface  BaseRepository<T, ID extends Serializable> extends Repository<T, ID> {
 
-    //通用查询：根据创建时间段查询并倒序
+    /**
+     * 按照时间段查询并倒序
+     * @param startDate
+     * @param endDate
+     * @return List<T>
+     */
     List<T> findByCreateTimeBetweenOrderByCreateTimeDesc(Date startDate, Date endDate);
-
 }
