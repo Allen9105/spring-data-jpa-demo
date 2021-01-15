@@ -23,4 +23,13 @@ public interface  BaseRepository<T, ID extends Serializable> extends Repository<
      * @return List<T>
      */
     List<T> findByCreateTimeBetweenOrderByCreateTimeDesc(Date startDate, Date endDate);
+
+    /**
+     * 按照时间段查询总条数
+     * @param statDate
+     * @param endDate
+     * @return count
+     */
+    long countByCreateTimeBetweenOrderByCreateTime(Date statDate, Date endDate);
+
 }

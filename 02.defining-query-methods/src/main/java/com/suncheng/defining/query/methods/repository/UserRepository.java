@@ -20,4 +20,18 @@ public interface UserRepository extends BaseRepository<User, Long> {
      */
     List<User> findByEmailEndingWith(String lastEmail);
 
+    /**
+     * 根据邮箱地址查询（忽略大小写）
+     * @param email
+     * @return User
+     */
+    User findByEmailIgnoreCase(String email);
+
+    /**
+     * 根据姓名删除
+     * @param name
+     * @return row
+     */
+    long deleteByName(String name);
+
 }
