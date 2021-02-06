@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 使用 @RepositoryDefinition 注解，定义 UserRepository（选择性暴露UserRepository中方法）
- * 相当于： public interface UserRepository extends UserRepository<User, Long>
+ * 相当于： public interface UserRepository extends Repository<User, Long>
  */
 @RepositoryDefinition(domainClass = User.class, idClass = Long.class)
 public interface UserRepository extends BaseRepository<User, Long> {
