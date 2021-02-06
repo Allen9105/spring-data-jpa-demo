@@ -15,7 +15,7 @@
 ### 模块列表
 
 - [x] [01.helloworld](https://github.com/IamSunCheng/spring-data-jpa-demo/tree/main/01.helloworld) `第一个helloworld程序` 
-- [ ] [02.defining-query-methods](ttps://github.com/IamSunCheng/spring-data-jpa-demo/tree/main/02.defining-query-methods) `自定义查询方法`
+- [x] [02.defining-query-methods](https://github.com/IamSunCheng/spring-data-jpa-demo/tree/main/02.defining-query-methods) `自定义查询方法`
 
 ### 其它说明
 
